@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClycheGraphics</title>
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Added styles for the side menu -->
+</head>
+<body>
+  <div class="menu-btn" id="menuBtn">&#9776; Menu</div>
+  <div class="side-menu" id="sideMenu">
+    <a href="home.html">Home</a>
+    <a href="ContactUs.html">Contact Us</a>
+    <a href="list.html">Product List</a>
+    <!-- Add more menu items as needed -->
+  </div>
 
+  <header>
+    <div style="margin-bottom: 20px">
+      <div class="plain-back">
+        <div class="logo-clyche">
+          <img src="Assects/clyche.png" alt="no-pics" />
+        </div>
+      </div>
+    </div>
+
+    <div id="slideshow" style="max-width: 100px; margin: 2px; text-align: center;">
+      <img src="Assects/Your big idea.jpg" alt="1">
+      <img src="Assects/Your big idea (1).jpg" alt="2" style="display: block; margin: 2px;">
+      <img src="Assects/Your big idea (2).jpg" alt="3" style="display: block; margin: 2px;">
+      <img src="Assects/Your big idea (3).jpg" alt="" style="display: block; margin: 2px;">
+      <img src="Assects/Your big idea (4).jpg" alt="" style="display: block; margin: 2px;">
+      <img src="Assects/Your big idea (5).jpg" alt="" style="display: block; margin: 2px;">
+      <img src="Assects/Your big idea (6).jpg" alt="" style="display: block; margin: 2px;">
+      <!-- <img src="Assects/market.jpg" alt=""> -->
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#slideshow > img:gt(0)").hide(); // Hide all slides except the first one
+        setInterval(function() {
+            $('#slideshow > img:first')
+            .fadeOut(1000)
+            .next()
+            .fadeIn(1000)
+            .end()
+            .appendTo('#slideshow');
+        }, 5000); // Change slide every 3 seconds (adjust as needed)
+    });
+</script>
+
+    
+    <!-- <div class="market-logo">
+      <img src="Assects/market.jpg" alt="this is market">
+    </div> -->
+  </header>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuBtn = document.getElementById('menuBtn');
+      const sideMenu = document.getElementById('sideMenu');
+      const categoryNav = document.querySelector('.category-nav');
+      const dropdownToggles = document.querySelectorAll(".category-nav > ul > li > a");
+
+      menuBtn.addEventListener('click', function() {
+        sideMenu.classList.toggle('active');
+      });
+
+      dropdownToggles.forEach((toggle) => {
+        toggle.addEventListener("click", function(e) {
+          e.preventDefault();
+          const dropdown = this.nextElementSibling;
+          dropdown.classList.toggle("show");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
